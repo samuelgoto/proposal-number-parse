@@ -4,7 +4,7 @@ Sam Goto (@samuelgoto) and Jordan Harband (@ljharb)
 
 # Stage 0
 
-This is a [stage 0](https://tc39.github.io/process-document/) proposal to create a static method in Number that:
+This is a [stage 0](https://tc39.github.io/process-document/) proposal to create a method to parse numbers that:
 
 * like parseFloat (and unlike Number), parses a string ignoring non-numeric suffix and returns a Number, and
 * like Number (and unlike parseFloat), stays up to date with the evolution of numeric literals
