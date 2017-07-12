@@ -11,7 +11,7 @@ This is a [stage 0](https://tc39.github.io/process-document/) proposal to create
 
 # Motivation
 
-In one hand, as the language evolves and new syntax for numeric literals are added (e.g. [binary/octal numeric literals](https://esdiscuss.org/topic/a-new-es6-draft-rev28), [numeric literal separators](https://github.com/tc39/proposal-numeric-separator), [big ints](https://tc39.github.io/proposal-bigint/), etc), more and more parseFloat and parseInt become outdated to parse user input.
+In one hand, as the language evolves and new syntax for numeric literals are added (e.g. [binary/octal numeric literals](https://esdiscuss.org/topic/a-new-es6-draft-rev28), [numeric literal separators](https://github.com/tc39/proposal-numeric-separator), [big ints](https://tc39.github.io/proposal-bigint/), etc), more and more parseFloat and parseInt become [outdated](https://github.com/tc39/ecma262/issues/927) to parse user input.
 
 On the other hand, the Number() constructor keeps up to date to the syntax to parse numbers, but can't be used to parse strings as effectively as parseFloat/parseInt can (specifically, it returns NaN on non-numeric suffixes).
 
@@ -77,6 +77,8 @@ Here are some of the ideas that circulated in different threads:
 
 ## Backwards incompatible APIs
 
+It is easy to see why these aren't super desirable, as it would largely #breaktheweb.
+
   * Modifying the Number() constructor to stop at non-numeric suffixes    
   * Modifying the parseFloat() method to be up to date to parsing numeric literals (e.g. binary/octal literals and numeric separators)
     
@@ -91,6 +93,8 @@ parseFloat("0xF") === 15; // From parseFloat("0xF") === 0.
 ```
 
 ## Explicit APIs
+
+Alternatively, it is worth noting that 
 
   * Extending Number() with explicit parameters (e.g. [radix](https://github.com/tc39/ecma262/issues/927#issuecomment-306629879))
   * [explicit parameters](https://github.com/tc39/ecma262/issues/927#issuecomment-306595340)
@@ -112,6 +116,10 @@ Number.parseInt('0b10', undefined, {
 ```
 
 ## Polyfills
+
+This functionality can be filled in in userland and plugged into the existing Number() constructor.
+
+TODO(ljharb): articulate why this should be part of the language.
 
 # Specification 
 
