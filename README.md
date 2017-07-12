@@ -11,21 +11,23 @@ This is a [stage 0](https://tc39.github.io/process-document/) proposal to create
 
 # Motivation
 
-As the language evolves and new syntax for numeric literals are added (e.g. [binary/octal numeric literals](https://esdiscuss.org/topic/a-new-es6-draft-rev28), [numeric literal separators](https://github.com/tc39/proposal-numeric-separator), etc) more and more parseFloat and parseInt become outdated.
+In one hand, as the language evolves and new syntax for numeric literals are added (e.g. [binary/octal numeric literals](https://esdiscuss.org/topic/a-new-es6-draft-rev28), [numeric literal separators](https://github.com/tc39/proposal-numeric-separator), [big ints](https://tc39.github.io/proposal-bigint/), etc), more and more parseFloat and parseInt become outdated to parse user input.
 
-The Number() constructor keeps up to date to the syntax to parse numbers, but can't be used to parse strings as effectively as parseFloat/parseInt can (specifically, it returns NaN on non-numeric suffixes).
+On the other hand, the Number() constructor keeps up to date to the syntax to parse numbers, but can't be used to parse strings as effectively as parseFloat/parseInt can (specifically, it returns NaN on non-numeric suffixes).
+
+For example:
 
 ```javascript
 parseInt("0b11") === 0; // expected 3, doesn't keep up with the newly introduced binary prefix
 Number("1px") === NaN; // expected 1, doesn't ignore the non-numeric "px" suffix
 ```
 
-Ideally, we would like something that:
+With that in mind, we would like something that:
 
 * resembles parseFloat/parseInt in that it can take input that isn't strictly numeric and parse it appropriately
 * resembles Number() in that new syntax introduce propagates to the parser
 
-Hence:
+For example:
 
 ```javascript
 Number.parse("0b11") == 3; // Yay, Number.parse keeps up with new syntax!
@@ -33,6 +35,8 @@ Number.parse("1px") == 1; // Yay, Number.parse is more useful than Number()!
 ```
 
 # Examples
+
+Here are a few ways where Number.parse provides a more convenient way to parse numbers compared to Number() and a more up to date way to parse numbers compared to parseFloat/parseInt.
 
 ```js
 // As opposed to parseFloat("1_000") === 1000, Number.parse ignores _
