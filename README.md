@@ -76,7 +76,15 @@ In addition to that, the same [issue](https://github.com/tc39/proposal-numeric-s
 
 Here are some of the ideas that circulated in different threads:
 
-## Backwards incompatible APIs
+## Regexes
+
+Sharing the same properties of this proposal, one implementation alternative would be to provide a [Regex](https://github.com/tc39/proposal-numeric-separator/issues/11#issuecomment-307079932) that represents the latest syntax for numeric values (but regexes being mutable complicates things).
+
+```
+new RegExp(`^${Number.FLOAT_PATTERN}\\s*px\\s*$`)
+```
+
+## Breaking Backwards Compatibility
 
 It is easy to see why these aren't super desirable, as it would largely #breaktheweb.
 
@@ -93,9 +101,9 @@ Number("1px") === 1; // From Number("1px") === NaN
 parseFloat("0xF") === 15; // From parseFloat("0xF") === 0.
 ```
 
-## Explicit APIs
+## Parametrization
 
-Alternatively, it is worth noting that 
+Alternatively, it is worth noting that we could also introduce parameters to existing methods:
 
   * Extending Number() with explicit parameters (e.g. [radix](https://github.com/tc39/ecma262/issues/927#issuecomment-306629879))
   * [explicit parameters](https://github.com/tc39/ecma262/issues/927#issuecomment-306595340)
