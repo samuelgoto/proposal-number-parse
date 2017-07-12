@@ -63,6 +63,8 @@ This proposal is attempting to resolve a long standing [issue](https://github.co
 
 More recently, as numeric separators are moving on, a similar [issue](https://github.com/tc39/proposal-numeric-separator/issues/11) was brought up that parseFloat() wasn't useful anymore to parse user input with _s.
 
+In addition to that, the same [issue](https://github.com/tc39/proposal-numeric-separator/issues/11#issuecomment-314893789) appears as we introduce BigInts.
+
 # Alternatives considered
 
 Here are some of the ideas that circulated in different threads:
