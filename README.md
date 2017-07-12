@@ -1,5 +1,7 @@
 # Number.parse()
 
+Sam Goto (@samuelgoto) and Jordan Harband (@ljharb)
+
 # Stage 0
 
 This is a [stage 0](https://tc39.github.io/process-document/) proposal to create a static method in Number that:
