@@ -6,8 +6,8 @@ Sam Goto (@samuelgoto) and Jordan Harband (@ljharb)
 
 This is a [stage 0](https://tc39.github.io/process-document/) proposal to create a static method in Number that:
 
-* parses a string (ignoring non-numeric suffix, viz parseFloat) and returns a Number and
-* stays up to date with the evolution of numeric literals (viz the Number constructor)
+* like parseFloat (and unlike Number), parses a string ignoring non-numeric suffix and returns a Number, and
+* like Number (and unlike parseFloat), stays up to date with the evolution of numeric literals
 
 # Motivation
 
