@@ -55,8 +55,9 @@ Number.parse("0xFF") === 255;
 // Number.parse assumes numeric literals leading with 0s to be decimal
 Number.parse("011") === 11;
 
-// As with Number("0o11") == 3 and Number("0b11") == 3, Number.parse can
-// also parse binary, octal and hexadecimal prefixes
+// As with Number("0o11") == 9 and Number("0b11") == 3, Number.parse can
+// also parse binary, octal and hexadecimal prefixes, unlike parseFloat("0o11")
+// which returns 0.
 Number.parse("0o11") == 9;
 
 // As with Number(" 0xF") === 15, Number.parse ignores leading whitespace.
